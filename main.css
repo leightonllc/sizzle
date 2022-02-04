@@ -2,28 +2,34 @@
     background-color:#989484;
     flex: auto;
     text-align: center;
-    font-size: xx-large;
     justify-content: center;
     color: beige;
+    min-height: 50px !important;
+    
 }
-
+.modal-body {
+    font-weight: bold;
+}
 .card-red {
-    background-color: #820458;
+    background-color: #820458 !important;
+    color: beige !important;
 }
 
 .card-green {
-    background-color: #398874;
+    background-color: #398874 !important;
+    color: beige !important;
 }
 
 .card-black {
-    background-color: #000000;
+    background-color: #000000 !important;
+    color: beige !important;
 }
 
 .keyboard {
     background-color: #e2e8f0;
     flex: auto;
     text-align: center;
-    font-size: x-large;
+    font-size: larger;
     justify-content: center;
     color: black;
     border:0px;
@@ -32,4 +38,14 @@
 
 .keyboard:hover {
     background-color: #d3d8df;
+}
+
+.alertbar {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+}
+
+.show {
+    display: block;
 }
