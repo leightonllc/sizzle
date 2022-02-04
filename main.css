@@ -7,6 +7,18 @@
     color: beige;
 }
 
+.card-red {
+    background-color: #820458;
+}
+
+.card-green {
+    background-color: #398874;
+}
+
+.card-black {
+    background-color: #000000;
+}
+
 .keyboard {
     background-color: #e2e8f0;
     flex: auto;
