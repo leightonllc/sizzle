@@ -1,0 +1,23 @@
+.card {
+    background-color:#989484;
+    flex: auto;
+    text-align: center;
+    font-size: xx-large;
+    justify-content: center;
+    color: beige;
+}
+
+.keyboard {
+    background-color: #e2e8f0;
+    flex: auto;
+    text-align: center;
+    font-size: x-large;
+    justify-content: center;
+    color: black;
+    border:0px;
+    overflow: hidden;
+}
+
+.keyboard:hover {
+    background-color: #d3d8df;
+}

@@ -1,136 +1,156 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Facle - geama laitheil fhacal</title>
-    <meta name="description" content="Guess the hidden word in 6 tries. A new puzzle is available each day.">
-
-    <!-- FB Meta Tags -->
-    <meta property="og:url" content="https://www.powerlanguage.co.uk/wordle/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Facle - geama laitheil fhacal">
-    <meta property="og:description" content="Feuch gum faigh thu am facal.">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="powerlanguage.co.uk">
-
-    <meta name="theme-color" content="#6aaa64" />
-    <link rel="manifest" href="manifest.json" />
-    <link href="images/wordle_logo_32x32.png" rel="icon shortcut" sizes="3232" />
-    <link href="images/wordle_logo_192x192.png" rel="apple-touch-icon" />
-
-    <!-- OBVIOUSLY A SHAMELESS COPY OF THE ORIGINAL WORDLE - ALL CREDIT TO THE OG CREATOR -->
-
-
-    <style>
-      /* Global Styles & Colors */
-      :root {
-        --green: #6aaa64;
-        --darkendGreen: #538d4e;
-        --yellow: #c9b458;
-        --darkendYellow: #b59f3b;
-        --lightGray: #d8d8d8;
-        --gray: #86888a;
-        --darkGray: #939598;
-        --white: #fff;
-        --black: #212121;
-        /* Colorblind colors */
-        --orange: #f5793a;
-        --blue: #85c0f9;
-        font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-        font-size: 16px;
-        --header-height: 50px;
-        --keyboard-height: 200px;
-        --game-max-width: 500px;
-      }
-      /* Light theme colors */
-      :root {
-        --color-tone-1: #1a1a1b;
-        --color-tone-2: #787c7e;
-        --color-tone-3: #878a8c;
-        --color-tone-4: #d3d6da;
-        --color-tone-5: #edeff1;
-        --color-tone-6: #f6f7f8;
-        --color-tone-7: #ffffff;
-        --opacity-50: rgba(255, 255, 255, 0.5);
-      }
-      /* Dark Theme Colors */
-      .nightmode {
-        --color-tone-1: #d7dadc;
-        --color-tone-2: #818384;
-        --color-tone-3: #565758;
-        --color-tone-4: #3a3a3c;
-        --color-tone-5: #272729;
-        --color-tone-6: #1a1a1b;
-        --color-tone-7: #121213;
-        --opacity-50: rgba(0, 0, 0, 0.5);
-      }
-      /* Constant colors and colors derived from theme */
-      :root,
-      .nightmode {
-        --color-background: var(--color-tone-7);
-      }
-      :root {
-        --color-present: var(--yellow);
-        --color-correct: var(--green);
-        --color-absent: var(--color-tone-2);
-        --tile-text-color: var(--color-tone-7);
-        --key-text-color: var(--color-tone-1);
-        --key-evaluated-text-color: var(--color-tone-7);
-        --key-bg: var(--color-tone-4);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-        --modal-content-bg: var(--color-tone-7);
-      }
-      .nightmode {
-        --color-present: var(--darkendYellow);
-        --color-correct: var(--darkendGreen);
-        --color-absent: var(--color-tone-4);
-        --tile-text-color: var(--color-tone-1);
-        --key-text-color: var(--color-tone-1);
-        --key-evaluated-text-color: var(--color-tone-1);
-        --key-bg: var(--color-tone-2);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-        --modal-content-bg: var(--color-tone-7);
-      }
-      .colorblind {
-        --color-correct: var(--orange);
-        --color-present: var(--blue);
-        --tile-text-color: var(--white);
-        --key-bg-present: var(--color-present);
-        --key-bg-correct: var(--color-correct);
-        --key-bg-absent: var(--color-absent);
-      }
-      html {
-        height: 100%;
-      }
-      body {
-        height: 100%;
-        background-color: var(--color-background);
-        margin: 0;
-        padding: 0;
-        /* Prevent scrollbar appearing on page transition */
-        overflow-y: hidden;
-      }
-    </style>
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+    <title>Sizzle - 每日玩轉六合彩</title>
   </head>
   <body>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSGMHY3NP"></script>
-    <script>
-      (function () {
-        // Defining the hash before the main bundle allows the bundle access window.hash
-        window.wordle = window.wordle || {};
-        window.wordle.hash = 'c1506a22';
-      })();
-    </script>
-    <script src="main.c1506a22.js"></script>
-    <game-app></game-app>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand navbar-light bg-light">
+          <div class="nav navbar-nav">
+              <a class="nav-item nav-link active" href="#">Home <span class="visually-hidden">(current)</span></a>
+              <a class="nav-item nav-link" href="#">Home</a>
+          </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+            <div class="card m-2">1</div>
+          </div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card keyboard m-2">1</div>
+            <div class="card keyboard m-2">2</div>
+            <div class="card keyboard m-2">3</div>
+            <div class="card keyboard m-2">4</div>
+            <div class="card keyboard m-2">5</div>
+            <div class="card keyboard m-2">6</div>
+            <div class="card keyboard m-2">7</div>
+            <div class="card keyboard m-2">8</div>
+            <div class="card keyboard m-2">9</div>
+            <div class="card keyboard m-2">10</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card keyboard m-2">11</div>
+            <div class="card keyboard m-2">12</div>
+            <div class="card keyboard m-2">13</div>
+            <div class="card keyboard m-2">14</div>
+            <div class="card keyboard m-2">15</div>
+            <div class="card keyboard m-2">16</div>
+            <div class="card keyboard m-2">17</div>
+            <div class="card keyboard m-2">18</div>
+            <div class="card keyboard m-2">19</div>
+            <div class="card keyboard m-2">20</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card keyboard m-2">21</div>
+            <div class="card keyboard m-2">22</div>
+            <div class="card keyboard m-2">23</div>
+            <div class="card keyboard m-2">24</div>
+            <div class="card keyboard m-2">25</div>
+            <div class="card keyboard m-2">26</div>
+            <div class="card keyboard m-2">27</div>
+            <div class="card keyboard m-2">28</div>
+            <div class="card keyboard m-2">29</div>
+            <div class="card keyboard m-2">30</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card keyboard m-2">31</div>
+            <div class="card keyboard m-2">32</div>
+            <div class="card keyboard m-2">33</div>
+            <div class="card keyboard m-2">34</div>
+            <div class="card keyboard m-2">35</div>
+            <div class="card keyboard m-2">36</div>
+            <div class="card keyboard m-2">37</div>
+            <div class="card keyboard m-2">38</div>
+            <div class="card keyboard m-2">39</div>
+            <div class="card keyboard m-2">40</div>
+          </div>
+          <div class="d-flex flex-row mb-2 justify-content-center">
+            <div class="card keyboard m-2">41</div>
+            <div class="card keyboard m-2">42</div>
+            <div class="card keyboard m-2">43</div>
+            <div class="card keyboard m-2">44</div>
+            <div class="card keyboard m-2">45</div>
+            <div class="card keyboard m-2">46</div>
+            <div class="card keyboard m-2">47</div>
+            <div class="card keyboard m-2">48</div>
+            <div class="card keyboard m-2">49</div>
+            <div class="card keyboard m-2">Enter</div>
+          </div>
+          
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
