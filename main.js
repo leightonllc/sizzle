@@ -244,5 +244,6 @@ const btn = document.querySelector('.share');
 // Share must be triggered by "user activation"
 btn.addEventListener('click', async () => {
 	navigator.clipboard.writeText("Sizzle " + (date.yyyymmdd() - "20220204") + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext);
-	document.getElementById("copydone").innerHTML = "擺咗落你個Clipboard到啦！"	
+	document.getElementById("copydone").innerHTML = "擺咗落你個Clipboard到啦！";
+	document.getElementById("copytexttemp").innerText = "Android Webview嘅朋友暫時要自己copy：\n\n" + "Sizzle " + (date.yyyymmdd() - "20220204") + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext;	
 });
