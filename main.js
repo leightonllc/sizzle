@@ -11,8 +11,7 @@ Date.prototype.yyyymmdd = function() {
 var date = new Date();
 
 if (!(date.yyyymmdd() == localStorage.getItem("lastdate"))) {
-	localStorage.removeItem("m");
-	localStorage.removeItem("saver");
+	localStorage.clear();
 }
 
 let $gamebox = document.getElementsByClassName("gamebox");
@@ -21,8 +20,8 @@ let $enter = document.getElementsByClassName("enter");
 let $backspace = document.getElementsByClassName("backspace");
 let random = new Math.seedrandom(date.yyyymmdd());
 let $answer = document.getElementsByClassName("answer");
+let $attempt = document.getElementsByClassName("attempt");
 let $container = document.getElementsByClassName("container-fluid");
-
 let answer = [];
 
 for (var i = 0; i < 6; i++) {
@@ -44,8 +43,6 @@ numberSort = function (a,b) {
 	return 0;
 };
 answer.sort(numberSort);
-alert("測試：答案爲 " + answer);
-
 
 
 let arr = [];
@@ -54,6 +51,10 @@ if (localStorage.getItem("m")) m = localStorage.getItem("m");
 let n = 0;
 let saver = [];
 if (localStorage.getItem("saver")) saver = JSON.parse(localStorage.getItem("saver"));
+let sharetext = "";
+if (localStorage.getItem("sharetext")) sharetext = localStorage.getItem("sharetext");
+let gamedone = false;
+if (localStorage.getItem("gamedone")) gamedone = localStorage.getItem("gamedone");
 
 if (m > 0) {
 	for (var i = 0; i < m; i++) {
@@ -73,7 +74,7 @@ if (m > 0) {
 	}
 }
 
-if (m == 5) {
+if (gamedone) {
 	document.getElementsByClassName("modal")[0].classList.remove("show");
 	document.getElementsByClassName("modal")[0].classList.add("fade");
 	$container[0].classList.remove("blur");
@@ -94,11 +95,21 @@ var inputmouseclick = function() {
 
 function countwin(){
 	let count = 0;
+	if (m == 0) m++;
 	for (var i = 0; i < 6; i++){
 		$answer[i].innerHTML = answer[i];
+		$attempt[i].innerHTML = $gamebox[(m-1) * 6 + i].innerHTML;
+		if (answer[i] == $gamebox[(m-1) * 6 + i].innerHTML) {
+			$attempt[i].classList.add("card-green");
+		} else if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) {
+			$attempt[i].classList.add("card-red");
+		} else {
+			$attempt[i].classList.add("card-black");
+		}
 		if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) count++;
 		document.getElementById("correctcount").innerHTML = count;
 	}
+	if (m == 1) m--;
 	document.getElementById("specialnumber").innerHTML = specialnum;
 	document.getElementsByClassName("modal")[1].classList.remove("hide");
 	document.getElementsByClassName("modal")[1].classList.add("show");
@@ -122,8 +133,12 @@ function countwin(){
 	$container[0].classList.add("blur");
 	$container[1].classList.add("blur");
 	$container[2].classList.add("blur");
+	gamedone = true;
+	localStorage.setItem("gamedone", true);
 
 }
+
+document.getElementsByClassName("modal-title")[1].innerHTML = "Sizzle - Wordle 六合彩版 第 " + (date.yyyymmdd() - "20220204") + " 期";
 
 var entermouseclick = function() {
 	if (arr.length < 6) {
@@ -140,34 +155,38 @@ var entermouseclick = function() {
 	}
 	if (JSON.stringify(arr) == JSON.stringify(answer)) {
 		countwin();
-		return;
 	}
     for (var i = 0; i < 6; i++){
 		if (answer[i] == $gamebox[m * 6 + i].innerHTML) {
 			$gamebox[m * 6 + i].classList.add("card-green");
 			$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-green");
 			saver.push($gamebox[m * 6 + i].innerHTML);
+			sharetext += '🟩';
 		} else 
 			if (answer.includes($gamebox[m * 6 + i].innerHTML)) {
 				$gamebox[m * 6 + i].classList.add("card-red");
 				$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-red");
 				saver.push($gamebox[m * 6 + i].innerHTML);
+				sharetext += '🟨';
 			} else {
 				$gamebox[m * 6 + i].classList.add("card-black");
 				$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-black");
 				saver.push($gamebox[m * 6 + i].innerHTML);
+				sharetext += '⬛';
 			}
 		//alert(answer.includes($gamebox[m * 6 + i].innerHTML));
 		
 	}
-
+	sharetext += "\n";
+	window.localStorage.setItem("sharetext", sharetext);
 	window.localStorage.setItem("saver", JSON.stringify(saver));
 	if (m < 6) m++;
+	window.localStorage.setItem("m", m);
 	if (m == 6) {
 		countwin();
 		return;
 	}
-	window.localStorage.setItem("m", m);
+	
 	n = 0;
 	arr = [];
 	window.localStorage.setItem("lastdate", date.yyyymmdd());
@@ -219,19 +238,18 @@ function alertbar(message, type) {
 	document.getElementsByTagName("div")[0].append(wrapper);
 }
 
-const shareData = {
-    title: 'Sizzle - Wordle 六合彩版',
-    text: 'Test',
-  }
 
-  const btn = document.querySelector('.share');
-  const resultPara = document.querySelector('.result');
+const btn = document.querySelector('.share');
 
-  // Share must be triggered by "user activation"
-  btn.addEventListener('click', async () => {
-    try {
-      await navigator.share(shareData)
+// Share must be triggered by "user activation"
+btn.addEventListener('click', async () => {
+	try {
+		var shareData = {
+			title: 'Sizzle - Wordle 六合彩版',
+			text: "Sizzle " + (date.yyyymmdd() - "20220204") + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext,
+		}
+     	 await navigator.share(shareData)
     } catch(err) {
       
     }
-  });
+});
