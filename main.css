@@ -5,8 +5,9 @@
     justify-content: center;
     color: beige;
     min-height: 50px !important;
-    
 }
+
+
 .modal-body {
     font-weight: bold;
 }
@@ -34,6 +35,19 @@
     color: black;
     border:0px;
     overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+    .keyboard {
+        background-color: #6d6d6d;
+        flex: auto;
+        text-align: center;
+        font-size: medium;
+        justify-content: center;
+        color: beige;
+        border:0px;
+        overflow: hidden;
+    }
 }
 
 .keyboard:hover {

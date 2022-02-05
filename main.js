@@ -138,7 +138,8 @@ function countwin(){
 
 }
 
-document.getElementsByClassName("modal-title")[1].innerHTML = "Sizzle - Wordle 六合彩版 第 " + (date.yyyymmdd() - "20220204") + " 期";
+  
+document.getElementsByClassName("modal-title")[1].innerHTML = "Sizzle - Wordle 六合彩版 第 " + Math.floor((Date.now() - 1643946444000) / (1000 * 60 * 60 * 24)) + " 期";
 
 var entermouseclick = function() {
 	if (arr.length < 6) {
