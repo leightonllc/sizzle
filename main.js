@@ -28,6 +28,12 @@ for (var i = 0; i < 6; i++) {
 		answer.push(String(Math.round(random() * 48 + 1)));
 	}
 }
+
+let specialnum = String(Math.round(random() * 48 + 1));
+while (answer.includes(specialnum)) {
+	specialnum = String(Math.round(random() * 48 + 1));
+}
+
 numberSort = function (a,b) {
 	if (parseInt(a) > parseInt(b)) return 1;
 	if (parseInt(a) < parseInt(b)) return -1;
@@ -58,8 +64,26 @@ function countwin(){
 		if (answer.includes($gamebox[m * 6 + i].innerHTML)) count++;
 		document.getElementById("correctcount").innerHTML = count;
 	}
+	document.getElementById("specialnumber").innerHTML = specialnum;
 	document.getElementsByClassName("modal")[1].classList.remove("hide");
 	document.getElementsByClassName("modal")[1].classList.add("show");
+	if (count == 6){
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中頭獎架啦！"
+	} else if (count == 5 && arr.includes(specialnum)) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中二獎架啦！"
+	} else if (count == 5) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中三獎架啦！"
+	} else if (count == 4 && arr.includes(specialnum)) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中四獎架啦！"
+	} else if (count == 4) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中五獎架啦！"
+	} else if (count == 3 && arr.includes(specialnum)) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中六獎架啦！"
+	} else if (count == 3) {
+		document.getElementById("awardtext").innerHTML = "嘩黐線架！你真係去買就中七獎架啦！"
+	} else {
+		document.getElementById("awardtext").innerHTML = "雖然咩獎都唔會有但係旨在開心嘅啫。"
+	}
 
 }
 
@@ -74,6 +98,10 @@ var entermouseclick = function() {
 	}
 	if (!sorted(arr)) {
 		alertbar("喂你識唔識架？六合彩由細至大入㗎喎！", 'danger');
+		return;
+	}
+	if (JSON.stringify(arr) == JSON.stringify(answer)) {
+		countwin();
 		return;
 	}
     for (var i = 0; i < 6; i++){
