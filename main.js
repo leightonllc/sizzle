@@ -16,7 +16,7 @@ let $input = document.getElementsByClassName("input");
 let $enter = document.getElementsByClassName("enter");
 let $backspace = document.getElementsByClassName("backspace");
 let random = new Math.seedrandom(date.yyyymmdd());
-
+let $answer = document.getElementsByClassName("answer");
 
 
 let answer = [];
@@ -51,6 +51,18 @@ var inputmouseclick = function() {
     //alert(arr);
 };
 
+function countwin(){
+	let count = 0;
+	for (var i = 0; i < 6; i++){
+		$answer[i].innerHTML = answer[i];
+		if (answer.includes($gamebox[m * 6 + i].innerHTML)) count++;
+		document.getElementById("correctcount").innerHTML = count;
+	}
+	document.getElementsByClassName("modal")[1].classList.remove("hide");
+	document.getElementsByClassName("modal")[1].classList.add("show");
+
+}
+
 var entermouseclick = function() {
 	if (arr.length < 6) {
 		alertbar("六粒呀！使唔使哥哥陪你逐隻手指數？", 'danger');
@@ -78,6 +90,10 @@ var entermouseclick = function() {
 			}
 		//alert(answer.includes($gamebox[m * 6 + i].innerHTML));
 		
+	}
+	if (m == 5) {
+		countwin();
+		return;
 	}
 	if (m < 6) m++;
 	n = 0;

@@ -159,36 +159,65 @@
           </div>
           <div class="modal-body">
             有一日，我同男朋友行街嘅時候佢問我玩緊咩，我話<a href="https://lukhap.jonathanl.dev/">《六合》</a>，跟住佢問我係咪即係六合彩版Wordle -_- 跟住我就諗不如我自己整個六合彩版啦，於是呢個無聊on9嘢就面世了。<br/><br/>
-            六次機會裡面，試下估中多啲數字，記得要由細至大入呀！。<br/><br/>
+            六次機會裡面，試下估中多啲數字，記得要由細至大入呀！<br/><br/>
             入完就撳「輸入」啦！睇顏色就知中咗幾多個㗎啦。<br/><br/>
-            同其他版本唔同，玩呢個版本唔好執着要估啱曬，因爲都冇咩可能hehehe。紅色綠色都係for你reference，睇下你今日運氣如何啦！
+            同其他版本唔同，玩呢個版本唔好執着要估啱曬，因爲都冇咩可能hehehe。紅色綠色都係for你reference，答案每日會自動更新，睇下你今日運氣如何啦！
             <div class="container-fluid d-flex mt-2 mb-2 justify-content-center">
-              <div class="card card-green gamebox m-2 flex-fill">4</div>
-              <div class="card gamebox m-2 flex-fill">7</div>
-              <div class="card gamebox m-2 flex-fill">15</div>
-              <div class="card gamebox m-2 flex-fill">18</div>
-              <div class="card gamebox m-2 flex-fill">31</div>
-              <div class="card gamebox m-2 flex-fill">43</div>
+              <div class="card card-green m-2 flex-fill">4</div>
+              <div class="card m-2 flex-fill">7</div>
+              <div class="card m-2 flex-fill">15</div>
+              <div class="card m-2 flex-fill">18</div>
+              <div class="card m-2 flex-fill">31</div>
+              <div class="card m-2 flex-fill">43</div>
             </div>
-            4 喺抽數字度而且啱位。
+            <p class="text-center">4 喺抽數字度而且啱位。</p>
             <div class="container-fluid d-flex mb-2 justify-content-center">
-              <div class="card gamebox m-2 flex-fill">4</div>
-              <div class="card gamebox m-2 flex-fill">7</div>
-              <div class="card card-red gamebox m-2 flex-fill">15</div>
-              <div class="card gamebox m-2 flex-fill">18</div>
-              <div class="card gamebox m-2 flex-fill">31</div>
-              <div class="card gamebox m-2 flex-fill">43</div>
+              <div class="card m-2 flex-fill">4</div>
+              <div class="card m-2 flex-fill">7</div>
+              <div class="card card-red m-2 flex-fill">15</div>
+              <div class="card m-2 flex-fill">18</div>
+              <div class="card m-2 flex-fill">31</div>
+              <div class="card m-2 flex-fill">43</div>
             </div>
-            15 喺抽數字度但係唔啱位。
+            <p class="text-center">15 喺抽數字度但係唔啱位。</p>
             <div class="container-fluid d-flex mb-2 justify-content-center">
-              <div class="card gamebox m-2 flex-fill">4</div>
-              <div class="card gamebox m-2 flex-fill">7</div>
-              <div class="card gamebox m-2 flex-fill">15</div>
-              <div class="card gamebox m-2 flex-fill">18</div>
-              <div class="card gamebox m-2 flex-fill">31</div>
-              <div class="card gamebox card-black m-2 flex-fill">43</div>
+              <div class="card m-2 flex-fill">4</div>
+              <div class="card m-2 flex-fill">7</div>
+              <div class="card m-2 flex-fill">15</div>
+              <div class="card m-2 flex-fill">18</div>
+              <div class="card m-2 flex-fill">31</div>
+              <div class="card card-black m-2 flex-fill">43</div>
             </div>
-            43 完全唔喺抽數字度。
+            <p class="text-center">43 完全唔喺抽數字度。</p>
+          
+          </div>
+          <!--
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div> 
+          -->
+        </div>
+      </div>
+    </div>
+
+    <div class="modal hide" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sizzle - Wordle 六合彩版</h5>
+          </div>
+          <div class="modal-body">
+            你最後中咗<span id="correctcount">a</span>個數字！如果你真係買六合彩中咗咁多個冧巴，你會贏到$ 。<br/><br/>
+            正確答案係：
+            <div class="container-fluid d-flex mt-2 mb-2 justify-content-center">
+              <div class="card card-green m-2 flex-fill answer">4</div>
+              <div class="card card-green m-2 flex-fill answer">7</div>
+              <div class="card card-green m-2 flex-fill answer">15</div>
+              <div class="card card-green m-2 flex-fill answer">18</div>
+              <div class="card card-green m-2 flex-fill answer">31</div>
+              <div class="card card-green m-2 flex-fill answer">43</div>
+            </div>
+            
           
           </div>
           <!--
