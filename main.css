@@ -64,6 +64,10 @@
     display: block;
 }
 
+.modal {
+
+    margin-top: 20px;
+}
 
 .endscreen {
     margin-top: 100px;
