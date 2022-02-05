@@ -29,7 +29,7 @@
     background-color: #e2e8f0;
     flex: auto;
     text-align: center;
-    font-size: larger;
+    font-size: medium;
     justify-content: center;
     color: black;
     border:0px;
@@ -48,4 +48,21 @@
 
 .show {
     display: block;
+}
+
+.modal {
+
+    margin-top: 10%;
+}
+
+.endscreen {
+    margin-top: 40%;
+}
+
+.blur {
+    -webkit-filter: blur(1px) grayscale(90%) opacity(40%); 
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px) grayscale(90%) opacity(40%);
 }

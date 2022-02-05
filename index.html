@@ -12,7 +12,7 @@
     <title>Sizzle - Wordle 六合彩版</title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid blur">
       <nav class="navbar navbar-expand navbar-light bg-light">
           <div class="nav navbar-nav">
               <a class="nav-item nav-link active" href="#">Sizzle <span class="visually-hidden">(current)</span></a>
@@ -21,7 +21,7 @@
       </nav>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid blur">
       <div class="row mt-3">
         <div class="col-sm-2 col-lg-4"></div>
         <div class="col-sm-8 col-lg-4">
@@ -78,9 +78,9 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid blur">
       <div class="row mt-3">
-        <div class="col-sm-1 col-lg-3"></div>
+        <div class="col-sm-1 col-lg-3 d-none d-sm-block"></div>
         <div class="col-sm-10 col-lg-6">
           <div class="d-flex mb-2 justify-content-center">
             <div class="card keyboard input m-2">1</div>
@@ -145,12 +145,12 @@
           </div>
           
         </div>
-        <div class="col-sm-1 col-lg-3"></div>
+        <div class="col-sm-1 col-lg-3 d-none d-xs-block"></div>
       </div>
     </div>
 
 
-    <div class="modal show" tabindex="-1" role="dialog">
+    <div class="modal show" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-modal="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -200,7 +200,7 @@
       </div>
     </div>
 
-    <div class="modal hide" tabindex="-1" role="dialog">
+    <div class="modal hide endscreen" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -218,7 +218,7 @@
               <div class="card card-green m-2 flex-fill answer">43</div>
             </div>
             再醒多你一個特別號嗎 <span id="specialnumber">a</span> 啦！<span id="awardtext"></span>
-            
+            <p><button class="share">Share MDN!</button></p>
           
           </div>
           <!--

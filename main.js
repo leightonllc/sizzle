@@ -17,7 +17,7 @@ let $enter = document.getElementsByClassName("enter");
 let $backspace = document.getElementsByClassName("backspace");
 let random = new Math.seedrandom(date.yyyymmdd());
 let $answer = document.getElementsByClassName("answer");
-
+let $container = document.getElementsByClassName("container-fluid");
 
 let answer = [];
 
@@ -45,7 +45,38 @@ alert("測試：答案爲 " + answer);
 
 
 let arr = [];
-let m = 0, n = 0;
+let m = 0;
+if (localStorage.getItem("m")) m = localStorage.getItem("m");
+let n = 0;
+let saver = [];
+if (localStorage.getItem("saver")) saver = JSON.parse(localStorage.getItem("saver"));
+
+if (m > 0) {
+	for (var i = 0; i <= m; i++) {
+		for (var j = 0; j < 6; j++) {
+			$gamebox[i * 6 + j].innerHTML = saver[i * 6 + j];
+			if (answer[j] == $gamebox[i * 6 + j].innerHTML) {
+				$gamebox[i * 6 + j].classList.add("card-green");
+				$input[$gamebox[i * 6 + j].innerHTML - 1].classList.add("card-green");
+			} else if (answer.includes($gamebox[i * 6 + j].innerHTML)) {
+				$gamebox[i * 6 + j].classList.add("card-red");
+				$input[$gamebox[i * 6 + j].innerHTML - 1].classList.add("card-red");
+			} else {
+				$gamebox[i * 6 + j].classList.add("card-black");
+				$input[$gamebox[i * 6 + j].innerHTML - 1].classList.add("card-black");
+			}
+		}
+	}
+}
+
+if (m == 5) {
+	document.getElementsByClassName("modal")[0].classList.remove("show");
+	document.getElementsByClassName("modal")[0].classList.add("fade");
+	$container[0].classList.remove("blur");
+	$container[1].classList.remove("blur");
+	$container[2].classList.remove("blur");
+	countwin();
+}
 
 var inputmouseclick = function() {
     var attribute = this.innerHTML;
@@ -61,7 +92,7 @@ function countwin(){
 	let count = 0;
 	for (var i = 0; i < 6; i++){
 		$answer[i].innerHTML = answer[i];
-		if (answer.includes($gamebox[m * 6 + i].innerHTML)) count++;
+		if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) count++;
 		document.getElementById("correctcount").innerHTML = count;
 	}
 	document.getElementById("specialnumber").innerHTML = specialnum;
@@ -84,6 +115,9 @@ function countwin(){
 	} else {
 		document.getElementById("awardtext").innerHTML = "雖然咩獎都唔會有但係旨在開心嘅啫。"
 	}
+	$container[0].classList.add("blur");
+	$container[1].classList.add("blur");
+	$container[2].classList.add("blur");
 
 }
 
@@ -108,25 +142,31 @@ var entermouseclick = function() {
 		if (answer[i] == $gamebox[m * 6 + i].innerHTML) {
 			$gamebox[m * 6 + i].classList.add("card-green");
 			$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-green");
+			saver.push($gamebox[m * 6 + i].innerHTML);
 		} else 
 			if (answer.includes($gamebox[m * 6 + i].innerHTML)) {
 				$gamebox[m * 6 + i].classList.add("card-red");
 				$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-red");
+				saver.push($gamebox[m * 6 + i].innerHTML);
 			} else {
 				$gamebox[m * 6 + i].classList.add("card-black");
 				$input[$gamebox[m * 6 + i].innerHTML - 1].classList.add("card-black");
+				saver.push($gamebox[m * 6 + i].innerHTML);
 			}
 		//alert(answer.includes($gamebox[m * 6 + i].innerHTML));
 		
 	}
-	if (m == 5) {
+
+	window.localStorage.setItem("saver", JSON.stringify(saver));
+	if (m < 6) m++;
+	if (m == 6) {
 		countwin();
 		return;
 	}
-	if (m < 6) m++;
+	window.localStorage.setItem("m", m);
 	n = 0;
 	arr = [];
-    
+
 };
 
 function sorted(array){
@@ -145,6 +185,9 @@ function checkForDuplicates(array) {
 var modalclose = function() {
 	document.getElementsByClassName("modal")[0].classList.remove("show");
 	document.getElementsByClassName("modal")[0].classList.add("fade");
+	$container[0].classList.remove("blur");
+	$container[1].classList.remove("blur");
+	$container[2].classList.remove("blur");
 }
 
 var backspacemouseclick = function() {
@@ -170,3 +213,20 @@ function alertbar(message, type) {
 	wrapper.innerHTML = '<div id="alert" class="container alert alert-dismissible alert-' + type + ' role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 	document.getElementsByTagName("div")[0].append(wrapper);
 }
+
+const shareData = {
+    title: 'Sizzle - Wordle 六合彩版',
+    text: 'Test',
+  }
+
+  const btn = document.querySelector('.share');
+  const resultPara = document.querySelector('.result');
+
+  // Share must be triggered by "user activation"
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.share(shareData)
+    } catch(err) {
+      
+    }
+  });
