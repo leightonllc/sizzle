@@ -1,7 +1,1 @@
-a quick and dirty wordle clone in scottish gaelic
-
-original code and absolutely any and all rights belong to Josh Wardle
-
-uses every five letter word from the scottish gaelic duolingo course
-
-14/01/21 - now with support for accents on letters
+A wordle game inspired by the Mark Six lottery of Hong Kong.
