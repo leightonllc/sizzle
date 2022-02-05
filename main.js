@@ -24,6 +24,7 @@ let $attempt = document.getElementsByClassName("attempt");
 let $container = document.getElementsByClassName("container-fluid");
 let answer = [];
 
+
 for (var i = 0; i < 6; i++) {
 	answer.push(String(Math.round(random() * 48 + 1)));
 	while (checkForDuplicates(answer)) {
@@ -55,6 +56,9 @@ let sharetext = "";
 if (localStorage.getItem("sharetext")) sharetext = localStorage.getItem("sharetext");
 let gamedone = false;
 if (localStorage.getItem("gamedone")) gamedone = localStorage.getItem("gamedone");
+let earlywin = false;
+if (localStorage.getItem("earlywin")) earlywin = localStorage.getItem("earlywin");
+
 
 if (m > 0) {
 	for (var i = 0; i < m; i++) {
@@ -95,7 +99,7 @@ var inputmouseclick = function() {
 
 function countwin(){
 	let count = 0;
-	if (m == 0) m++;
+	if (earlywin && !gamedone) m++;
 	for (var i = 0; i < 6; i++){
 		$answer[i].innerHTML = answer[i];
 		$attempt[i].innerHTML = $gamebox[(m-1) * 6 + i].innerHTML;
@@ -109,7 +113,7 @@ function countwin(){
 		if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) count++;
 		document.getElementById("correctcount").innerHTML = count;
 	}
-	if (m == 1) m--;
+	if (earlywin) m--;
 	document.getElementById("specialnumber").innerHTML = specialnum;
 	document.getElementsByClassName("modal")[1].classList.remove("hide");
 	document.getElementsByClassName("modal")[1].classList.add("show");
@@ -155,6 +159,8 @@ var entermouseclick = function() {
 		return;
 	}
 	if (JSON.stringify(arr) == JSON.stringify(answer)) {
+		earlywin = true;
+		window.localStorage.setItem("earlywin", earlywin);
 		countwin();
 	}
     for (var i = 0; i < 6; i++){
