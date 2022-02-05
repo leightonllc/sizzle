@@ -238,7 +238,6 @@ function alertbar(message, type) {
 	document.getElementsByTagName("div")[0].append(wrapper);
 }
 
-
 const btn = document.querySelector('.share');
 
 // Share must be triggered by "user activation"
