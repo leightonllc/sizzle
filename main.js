@@ -10,6 +10,10 @@ Date.prototype.yyyymmdd = function() {
   
 var date = new Date();
 
+if (!(date.yyyymmdd() == localStorage.getItem("lastdate"))) {
+	localStorage.removeItem("m");
+	localStorage.removeItem("saver");
+}
 
 let $gamebox = document.getElementsByClassName("gamebox");
 let $input = document.getElementsByClassName("input");
@@ -52,7 +56,7 @@ let saver = [];
 if (localStorage.getItem("saver")) saver = JSON.parse(localStorage.getItem("saver"));
 
 if (m > 0) {
-	for (var i = 0; i <= m; i++) {
+	for (var i = 0; i < m; i++) {
 		for (var j = 0; j < 6; j++) {
 			$gamebox[i * 6 + j].innerHTML = saver[i * 6 + j];
 			if (answer[j] == $gamebox[i * 6 + j].innerHTML) {
@@ -166,6 +170,7 @@ var entermouseclick = function() {
 	window.localStorage.setItem("m", m);
 	n = 0;
 	arr = [];
+	window.localStorage.setItem("lastdate", date.yyyymmdd());
 
 };
 
