@@ -80,7 +80,6 @@ if (gamedone) {
 	$container[0].classList.remove("blur");
 	$container[1].classList.remove("blur");
 	$container[2].classList.remove("blur");
-	if (m > 0) m--;
 	countwin();
 }
 
@@ -95,26 +94,22 @@ var inputmouseclick = function() {
 };
 
 function countwin(){
-	let flag = false;
 	let count = 0;
-	if (m < 6) {
-		m++;
-		flag = true;
-	}
+	if (m == 0) m++;
 	for (var i = 0; i < 6; i++){
 		$answer[i].innerHTML = answer[i];
 		$attempt[i].innerHTML = $gamebox[(m-1) * 6 + i].innerHTML;
-		if (answer[i] == $attempt[i].innerHTML) {
+		if (answer[i] == $gamebox[(m-1) * 6 + i].innerHTML) {
 			$attempt[i].classList.add("card-green");
-		} else if (answer.includes($attempt[i].innerHTML)) {
+		} else if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) {
 			$attempt[i].classList.add("card-red");
 		} else {
 			$attempt[i].classList.add("card-black");
 		}
-		if (answer.includes($attempt[i].innerHTML)) count++;
+		if (answer.includes($gamebox[(m-1) * 6 + i].innerHTML)) count++;
 		document.getElementById("correctcount").innerHTML = count;
 	}
-	if (flag) m--;
+	if (m == 1) m--;
 	document.getElementById("specialnumber").innerHTML = specialnum;
 	document.getElementsByClassName("modal")[1].classList.remove("hide");
 	document.getElementsByClassName("modal")[1].classList.add("show");
@@ -243,7 +238,6 @@ function alertbar(message, type) {
 	wrapper.innerHTML = '<div id="alert" class="container alert alert-dismissible alert-' + type + ' role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 	document.getElementsByTagName("div")[0].append(wrapper);
 }
-
 
 const btn = document.querySelector('.share');
 
