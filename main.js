@@ -249,7 +249,13 @@ const btn = document.querySelector('.share');
 
 // Share must be triggered by "user activation"
 btn.addEventListener('click', async () => {
-	navigator.clipboard.writeText("Sizzle " + Math.floor((Date.now() - 1643904000000) / (1000 * 60 * 60 * 24)) + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext);
-	document.getElementById("copydone").innerHTML = "擺咗落你個Clipboard到啦！";
-	document.getElementById("copytexttemp").innerText = "Android Webview嘅朋友暫時要自己copy：\n\n" + "Sizzle " + (date.yyyymmdd() - "20220204") + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext;	
+	try {
+		var shareData = {
+			title: 'Sizzle - Wordle 六合彩版',
+			text: "Sizzle " + Math.floor((Date.now() - 1643904000000) / (1000 * 60 * 60 * 24)) + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext,
+		  }
+		  await navigator.share(shareData)
+	} catch(err) {
+		document.getElementById("copytexttemp").innerText = "\nAndroid Webview嘅朋友暫時要自己copy：\n\n" + "Sizzle " + (date.yyyymmdd() - "20220204") + " " + document.getElementById("correctcount").innerHTML + "/6\n" + sharetext;
+	}
 });
